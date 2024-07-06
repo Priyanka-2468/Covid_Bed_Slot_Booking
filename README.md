@@ -1,100 +1,77 @@
 # COVID Bed Slot Booking System
 
+## Overview
 
-## Introduction
-The COVID Bed Slot Booking System is designed to help hospitals and healthcare facilities manage bed availability efficiently during the COVID-19 pandemic. This system allows patients or their representatives to book beds in advance, ensuring that the hospital can manage its resources effectively and patients can receive timely care.
+The COVID Bed Slot Booking System is a web-based application designed to manage and book hospital beds during the COVID-19 pandemic. The system has three distinct login portals: Admin, Hospital, and Patient User, each with specific functionalities to ensure efficient management and allocation of hospital resources.
 
 ## Features
-- **User Authentication**: Secure login and registration for users.
-- **Bed Availability**: Real-time updates on bed availability.
-- **Slot Booking**: Users can book available slots for COVID-19 beds.
-- **Notifications**: Email and SMS notifications for booking confirmations and updates.
-- **Admin Panel**: Manage bed slots, view bookings, and update availability.
-- **Reports**: Generate reports on bed occupancy and booking history.
 
-## Technologies Used
-- **Programming Language**: Python
-- **Web Framework**: Flask
-- **Database**: MySQL
-- **Authentication**: JWT (JSON Web Tokens)
-- **Notifications**: Twilio for SMS, smtplib for email
-- **Deployment**: Docker
+### Admin Login
+- **Credentials:** 
+  - Username: admin
+  - Password: admin
+- **Functionalities:**
+  - Add hospital information.
+  - Provide login credentials to hospital owners.
 
+### Hospital Login
+- **Functionalities:**
+  - Login using credentials provided by the admin.
+  - Add and update hospital data, including bed availability and other hospital information.
 
+### Patient User Login
+- **Functionalities:**
+  - Register user details.
+  - Select hospitals with available beds.
+  - Book bed slots using SRFID (Smart Radio Frequency Identification).
+
+### Additional Features
+- Automatic triggers and stored procedures are implemented internally for efficient data handling and updates.
 
 ## Installation
-To get a local copy up and running follow these simple steps:
 
-### Prerequisites
-- Python 3.x installed
-- MySQL installed
-- Docker installed (for containerization)
+To set up the project locally, follow these steps:
 
-### Clone the repository
-```sh
-git clone https://github.com/Priyanka-2468/covid-bed-slot-booking-system.git
-cd covid-bed-slot-booking-system
-```
-
-### Set up and activate virtual environment
-```sh
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-```
-
-### Install dependencies
-```sh
-pip install -r requirements.txt
-```
-
-### Set up environment variables
-Create a `.env` file in the root directory and add the following variables:
-```
-DATABASE_URI=mysql+pymysql://username:password@localhost:3306/database_name
-JWT_SECRET=your_jwt_secret
-TWILIO_SID=your_twilio_sid
-TWILIO_AUTH_TOKEN=your_twilio_auth_token
-TWILIO_PHONE_NUMBER=your_twilio_phone_number
-EMAIL_HOST=your_email_host
-EMAIL_PORT=your_email_port
-EMAIL_USER=your_email_user
-EMAIL_PASS=your_email_password
-```
-
-### Set up the database
-1. Log into MySQL and create a database:
-    ```sql
-    CREATE DATABASE covid_bed_booking;
-    ```
-2. Import the database schema:
-    ```sh
-    mysql -u username -p covid_bed_booking < covid.sql
-    ```
-
-### Run the application
-```sh
-python main.py
-```
-
-The application will be running on `http://localhost:5000`.
+1. Open the command prompt.
+2. Install the required modules using the following commands:
+   ```bash
+   pip install flask
+   pip install Flask-SQLAlchemy
+   pip install Flask-Mail
+   pip install mysqlclient
+   pip install Flask-Login
+   ```
 
 ## Usage
-1. **Register or Login**: Users can register for a new account or login using existing credentials.
-2. **View Bed Availability**: Check the availability of COVID-19 beds.
-3. **Book a Slot**: Select an available slot and confirm the booking.
-4. **Receive Notifications**: Get notifications for booking confirmation and updates.
-5. **Admin Panel**: (For admins only) Manage bed availability, view bookings, and generate reports.
 
+1. **Admin:**
+   - Login with the provided credentials.
+   - Add hospitals and generate credentials for hospital owners.
 
-## Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+2. **Hospital Owner:**
+   - Login with the credentials provided by the admin.
+   - Update hospital information, including bed availability.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/YourFeature`)
-3. Commit your Changes (`git commit -m 'Add some feature'`)
-4. Push to the Branch (`git push origin feature/YourFeature`)
-5. Open a Pull Request
+3. **Patient User:**
+   - Register on the platform.
+   - Select a hospital with available beds.
+   - Book a bed slot using SRFID.
+
+## Project Structure
+
+- **Admin Module:** Manages hospitals and credentials.
+- **Hospital Module:** Manages hospital data and bed availability.
+- **Patient User Module:** Manages user registrations and bed bookings.
+
+## Technologies Used
+
+- **Backend:** Flask, Flask-SQLAlchemy, Flask-Mail, Flask-Login, mysqlclient
+- **Database:** MySQL
+- **Frontend:** HTML, CSS
 
 ## License
-Distributed under the MIT License. See `LICENSE` for more information.
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+---
 
